@@ -1,8 +1,6 @@
-# kutuphane-gecikme-hesaplayici
-Kutuphane Gecikme Hesaplayici  Bu program, bir kütüphane kullanıcısının ödünç aldığı bir kitabı zamanında iade edip etmediğini ve olası gecikme ücretini hesaplamak için tasarlanmıştır.
-Kutuphane Gecikme Hesaplayici
+#Kutuphane Gecikme Hesaplayici
 
-Bu program, bir kütüphane kullanıcısının ödünç aldığı bir kitabı zamanında iade edip etmediğini ve olası gecikme ücretini hesaplamak için tasarlanmıştır.
+Bu program, bir kütüphane kullanıcısının ödünç aldığı bir kitabı zamanında iade edip etmediğini ve olası gecikme ücretini hesaplamak için tasarlanmıştır. Tarihler, epoch zaman formatı kullanılarak hesaplanır.
 
 Kullanım
 
@@ -24,7 +22,11 @@ Ay
 
 Gün
 
-Program, girilen tarihler arasındaki farkı hesaplar ve kitap ödünç süresini gün cinsinden ekrana yazdırır. Kitabın 14 günden fazla gecikmesi durumunda gecikme süresi ve toplam gecikme ücreti hesaplanır ve ekrana yazdırılır.
+Program, girilen tarihleri epoch zamanına çevirir ve iki tarih arasındaki farkı hesaplar. Kitap ödünç süresi gün cinsinden ekrana yazdırılır. Kitabın 14 günden fazla gecikmesi durumunda gecikme süresi ve toplam gecikme ücreti hesaplanarak ekrana yazdırılır.
+
+Epoch Zamanı Nedir?
+
+Epoch zamanı, 1 Ocak 1970 00:00:00 UTC'den itibaren geçen toplam saniye sayısını temsil eder. Program, tarihler arasındaki farkı bu zaman formatına çevirerek hesaplar.
 
 Gecikme Hesaplama
 
