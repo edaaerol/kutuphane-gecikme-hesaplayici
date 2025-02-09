@@ -1,33 +1,28 @@
-Bu program, bir kütüphane kullanıcısının ödünç aldığı bir kitabı zamanında iade edip etmediğini ve olası gecikme ücretini hesaplamak için tasarlanmıştır. Tarihler, epoch zaman formatı kullanılarak hesaplanır.
+#Kütüphane Kitap Gecikme Hesaplama Programı#
 
-Kullanım
+Bu program, kullanıcıların kütüphaneden ödünç aldıkları kitapların gecikme süresini ve gecikme ücretlerini hesaplamak için tasarlanmıştır. Kullanıcılar ödünç aldıkları ve iade ettikleri tarihleri girdikten sonra program, gecikme süresini hesaplar ve gecikme ücreti varsa bunu ekrana yazdırır.
 
-Program çalıştırıldığında kullanıcıdan aşağıdaki bilgileri girmesi istenir:
+Kullanılan Yapılar ve Fonksiyonlar
 
-Kullanıcı Bilgileri:
+Yapılar
+struct Tarih: Tarih bilgilerini (yıl, ay, gün) tutar.
+struct Kullanici: Kullanıcı bilgilerini (ad, soyad, üye no) tutar.
 
-Ad
+Fonksiyonlar
+time_t EpochaCevir(struct Tarih tarih): Verilen tarihi epoch (Unix zamanına) çevirir.
 
-Soyad
+Program Akışı
+Kullanıcı bilgileri (ad, soyad, üye no) istenir.
+Ödünç alınan tarih (yıl, ay, gün) istenir. Tarih bilgileri doğrulanır (yıl 1970'ten büyük, ay 1-12 arası, gün 1-31 arası olmalıdır).
+İade tarihi (yıl, ay, gün) istenir. Tarih bilgileri doğrulanır (yıl 1970'ten büyük, ay 1-12 arası, gün 1-31 arası olmalıdır).
+Ödünç alınan ve iade edilen tarihler epoch zamanına çevrilir.
+İki tarih arasındaki gün farkı hesaplanır.
+Gecikme süresi (ödünç süresi 14 günü aştığında) hesaplanır ve varsa gecikme ücreti ekrana yazdırılır.
 
-Üye numarası
+Derleme ve Çalıştırma
+Bu programı derlemek ve çalıştırmak için aşağıdaki adımları izleyin:
 
-Kitap Ödünç ve İade Tarihleri:
-
-Yıl
-
-Ay
-
-Gün
-
-Program, girilen tarihleri epoch zamanına çevirir ve iki tarih arasındaki farkı hesaplar. Kitap ödünç süresi gün cinsinden ekrana yazdırılır. Kitabın 14 günden fazla gecikmesi durumunda gecikme süresi ve toplam gecikme ücreti hesaplanarak ekrana yazdırılır.
-
-Epoch Zamanı Nedir?
-
-Epoch zamanı, 1 Ocak 1970 00:00:00 UTC'den itibaren geçen toplam saniye sayısını temsil eder. Program, tarihler arasındaki farkı bu zaman formatına çevirerek hesaplar.
-
-Gecikme Hesaplama
-
-Kitap 14 günden fazla tutulursa gecikme günü hesaplanır.
-
-Gecikme ücreti her gün için 2 TL olarak belirlenmiştir.
+Kodu bir dosyaya kaydedin.
+Komut satırında aşağıdaki komutu kullanarak programı derleyin.
+Programı çalıştırın.
+Programın doğru çalışması için gcc derleyicisinin kurulu olduğundan emin olun.
