@@ -1,28 +1,80 @@
-#Kütüphane Kitap Gecikme Hesaplama Programı#
+## Kütüphane Kitap Gecikme Hesaplama Programı
 
-Bu program, kullanıcıların kütüphaneden ödünç aldıkları kitapların gecikme süresini ve gecikme ücretlerini hesaplamak için tasarlanmıştır. Kullanıcılar ödünç aldıkları ve iade ettikleri tarihleri girdikten sonra program, gecikme süresini hesaplar ve gecikme ücreti varsa bunu ekrana yazdırır.
+Bu program, bir kullanıcının kütüphaneden ödünç aldığı bir kitabı zamanında teslim edip etmediğini kontrol eder ve gecikme üreti hesaplar.
 
-Kullanılan Yapılar ve Fonksiyonlar
+### İÇİNDEKİLER
+- [Kullanım](#kullanım)
+- [Derleme ve Çalıştırma](#derleme-ve-çalıştırma)
+- [Kod Yapısı](#kod-yapısı)
+- [Örnek Kullanım](#örnek-kullanım)
+- [Notlar](#notlar)
 
-Yapılar
-struct Tarih: Tarih bilgilerini (yıl, ay, gün) tutar.
-struct Kullanici: Kullanıcı bilgilerini (ad, soyad, üye no) tutar.
+### Kullanım
 
-Fonksiyonlar
-time_t EpochaCevir(struct Tarih tarih): Verilen tarihi epoch (Unix zamanına) çevirir.
+-Program çalıştırıldığında, kullanıcıdan ad, soyad ve üye numarası girmesi istenir.
 
-Program Akışı
-Kullanıcı bilgileri (ad, soyad, üye no) istenir.
-Ödünç alınan tarih (yıl, ay, gün) istenir. Tarih bilgileri doğrulanır (yıl 1970'ten büyük, ay 1-12 arası, gün 1-31 arası olmalıdır).
-İade tarihi (yıl, ay, gün) istenir. Tarih bilgileri doğrulanır (yıl 1970'ten büyük, ay 1-12 arası, gün 1-31 arası olmalıdır).
-Ödünç alınan ve iade edilen tarihler epoch zamanına çevrilir.
-İki tarih arasındaki gün farkı hesaplanır.
-Gecikme süresi (ödünç süresi 14 günü aştığında) hesaplanır ve varsa gecikme ücreti ekrana yazdırılır.
+-Daha sonra, kitabı ödünç aldığı tarih ve iade ettiği tarih sırasıyla girilir.
 
-Derleme ve Çalıştırma
-Bu programı derlemek ve çalıştırmak için aşağıdaki adımları izleyin:
+-Girilen tarihler epoch zamanına çevrilerek aralarındaki fark hesaplanır.
 
-Kodu bir dosyaya kaydedin.
-Komut satırında aşağıdaki komutu kullanarak programı derleyin.
-Programı çalıştırın.
-Programın doğru çalışması için gcc derleyicisinin kurulu olduğundan emin olun.
+-Kitabın ödünç süresi 14 gün olarak kabul edilir. Eğer teslim tarihi gecikmişse, gecikme gün sayısına göre toplam gecikme üreti hesaplanır ve ekrana yazdırılır.
+
+
+### Derleme ve Çalıştırma
+
+Programı derlemek için:
+```sh
+gcc -o gecikme hesaplama.c -Wall
+```
+
+Oluşturulan gecikme programını çalıştırmak için:
+```sh
+./gecikme
+```
+
+### Kod Yapısı
+
+`struct Tarih`: Tarih verisini (yıl, ay, gün) tutar.
+
+`struct Kullanici`: Kullanıcının ad, soyad ve üye numarasını tutar.
+
+`EpochaCevir`: Verilen tarihi epoch zamanına çevirir.
+
+`main`: Kullanıcıdan gerekli bilgileri alır, hesaplamaları yapar ve sonucu ekrana yazdırır.
+
+### Örnek Kullanım
+
+Girdi:
+```sh
+Ad: Eda
+Soyad: Erol
+Uye No: 1234
+Odunc aldiginiz tarihi giriniz:
+Yil: 2024
+Ay (1-12): 2
+Gun: 1
+Iade tarihini giriniz:
+Yil: 2024
+Ay (1-12): 2
+Gun: 20
+```
+Çıktı:
+```sh
+Odunc tarihi epoch: 1706745600
+Iade tarihi epoch: 1708387200
+Kitap odunc suresi: 19 gun
+
+Merhaba Eda!
+Gecikme gunu: 5
+Toplam gecikme ucreti: 10 TL
+```
+
+### Notlar
+
+-Gecikme üreti 2 TL/gün olarak belirlenmiştir.
+
+-Tarih hesaplamalarında time.h kütüphanesi kullanılmıştır.
+
+-Yanlış girilen tarihler için gerekli kontroller mevcuttur.
+
+-Bu program, kitap gecikme hesaplamalarında kütüphanelere yardımcı olmak için tasarlanmıştır.
